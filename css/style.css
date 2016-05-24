@@ -1,0 +1,86 @@
+body{
+  font-size: 20px;
+  background: #eee;
+}
+.login-holder{
+  width: 75%;
+  padding: 5%;
+}
+.login-holder h4{
+  font-size: 30px;
+  text-align: center;
+}
+.login-holder form{
+  padding: 10%;
+}
+.login-holder button{
+  padding: 0px;
+  width: 100%;
+  background-color: #00ac37;
+  padding: 2%;
+  border: none;
+  position: absolute;
+  margin-left: -12.8%;
+  color: white;
+  font-weight: bold;
+  margin-top: 7%;
+}
+.login-holder button:focus{
+  border: none;
+  padding: 2%;
+}
+.login-holder button:active{
+  padding: 0px;
+  background-color: #00ac37;
+  padding: 2%;
+  border: none;
+}
+
+/*Styling For Mobile Devices*/
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  body{
+    font-size: 90px;
+    width: auto;
+  }
+  .login-holder{
+    width: 150%;
+    padding: 0%;
+  }
+  .login-holder h4{
+    font-size: 90px!important;
+    text-align: center;
+  }
+  .login-holder form{
+    padding: 10%;
+    width: auto;
+    height: 100vh;
+  }
+  .login-holder form label{
+    font-size: 25px;
+  }
+  .login-holder button{
+    padding: 0px;
+    width: 100%;
+    background-color: #00ac37;
+    padding: 2%;
+    border: none;
+    position: absolute;
+    margin-left: -12.8%;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 7%;
+  }
+  .login-holder button:focus{
+    border: none;
+    padding: 2%;
+  }
+  .login-holder button:active{
+    padding: 0px;
+    background-color: #00ac37;
+    padding: 2%;
+    border: none;
+  }
+}
