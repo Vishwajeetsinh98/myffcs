@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MY FFCS|Timetable</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet">
+    <!--JS-->
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+  </head>
+  <body>
+    <div class="row timetable-title-panel">
+      <div class="col s12 m8 l8">
+        <a href="#"><h4>My FFCS</h4></a>
+      </div>
+    </div>
+    <div class="timetable-menu-list row">
+      <div class="col s12 m8 l8 push-l2">
+        <div class="card z-depth-3">
+          <div class="card-content">
+          <form>
+              <div class="row"><select class="course-list-1" name="course-list">
+                  <option value="0">Select Your Course</option>
+                  <option value="CSE1002">CSE1002-Problem Solving And Programming</option>
+                  <option value="ITE1001">ITE1001-Digital Logic And Microprocessor</option>
+                  <option value="ITE1004">ITE1004-Data Structures And Algorithms</option>
+                  <option value="MAT1014">MAT1014-Discrete Mathematics And Graph Theory</option>
+                  <option value="MAT2001">MAT2001-Statistics For Engineers</option>
+                </select>
+              </div>
+              <div class="row">
+                <select class="slot-list-1" name="slot-list">
+                  <option value="0">Select Your Slot</option>
+                </select>
+              </div>
+              <div class="row">
+                <select class="faculty-list-1" name="faculty-list">
+                  <option value="0">Select Your Faculty</option>
+                </select>
+              </div>
+              <button class="timetable-menu-list-submit submit-button" onclick="timetableArrange()">Save!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.course-list-1').select2();
+      $('.slot-list-1').select2();
+      $('.faculty-list-1').select2();
+    });
+  </script>
+</html>
