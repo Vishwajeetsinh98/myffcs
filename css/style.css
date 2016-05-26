@@ -147,3 +147,36 @@ body{
   padding: 2%;
   border: none;
 }
+.timetable{
+  color: white;
+  font-size: 18px;
+}
+.timetable .timetable-timing{
+  background-color: #8faec2;
+  padding: 1.5%;
+}
+.timetable td{
+  border: 1px solid;
+  border-color: rgba(128,128,128,0.2);
+  border-bottom: 2px solid white;
+  padding: 1%;
+}
+.timetable .timetable-header{
+  border-bottom: 2px solid white!important;
+  border: 1px solid rgba(128,128,128,0.2);
+  background: #8faec2;
+  padding: 2%;
+}
+
+.timetable .inactive{
+  padding: 2.5%;
+}
+.timetable .inactive:nth-child(even){
+  background: #ddd;
+  padding: 3%;
+}
+.timetable-seminar{
+  padding: 2%;
+  color: #555;
+  text-align: center;
+}
