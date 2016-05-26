@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MY FFCS|Timetable</title>
+    <title>MY FFCS | Timetable</title>
     <!--CSS-->
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -18,13 +18,17 @@
       <div class="col s12 m8 l8">
         <a href="#"><h4>My FFCS</h4></a>
       </div>
+      <div class="col s12 m4 l4">
+        <button class="submit-button">Save TimeTable</button>
+        <button class="submit-button">Logout</button>
+      </div>
     </div>
     <div class="timetable-menu-list row">
-      <div class="col s12 m8 l8 push-l2">
+      <div class="col s12 m4 l4 push-l1">
         <div class="card z-depth-3">
           <div class="card-content">
           <form>
-              <div class="row"><select class="course-list-1" name="course-list">
+              <div class="row"><select id="course-list" class="course-list-1" name="course-list">
                   <option value="0">Select Your Course</option>
                   <option value="CSE1002">CSE1002-Problem Solving And Programming</option>
                   <option value="ITE1001">ITE1001-Digital Logic And Microprocessor</option>
@@ -34,17 +38,30 @@
                 </select>
               </div>
               <div class="row">
-                <select class="slot-list-1" name="slot-list">
+                <select id="slot-list" class="slot-list-1" name="slot-list">
                   <option value="0">Select Your Slot</option>
+                  <option value="L31+L32+L33+L34+L35+L36">L31+L32+L33+L34+L35+L36</option>
+                  <option value="A1">A1</option>
                 </select>
               </div>
               <div class="row">
-                <select class="faculty-list-1" name="faculty-list">
+                <select id="faculty-list" class="faculty-list-1" name="faculty-list">
                   <option value="0">Select Your Faculty</option>
+                  <option value="SenthilKumar">Senthil Kumar</option>
+                  <option value="Varalakshmi">Varalakshmi</option>
                 </select>
               </div>
-              <button class="timetable-menu-list-submit submit-button" onclick="timetableArrange()">Save!</button>
+              <button onclick="timetableArrange()" class="submit-button">Save!</button>
             </form>
+          </div>
+        </div>
+      </div>
+      <div class="courses-selected col s12 m6 l6 push-l1">
+        <div class="card z-depth-3">
+          <div class="card-content">
+            <ol id = "courses-selected-list" class="courses-selected-list">
+              <li><h5 style="font-size: 20px">CSE1002-Problem Solving And Programming</h5><p style="font-size: 15px;">L31+L32+L33+L34+L35+L36<br> Credits: 3</p></li>
+            </ol>
           </div>
         </div>
       </div>
@@ -53,19 +70,19 @@
       <table>
         <tr class="timetable-headings">
           <td class="timetable-header">Time</td>
-          <td class="timetable-timing">8:00-8:50</td>
-          <td class="timetable-timing">9:00-9:50</td>
+          <td class="timetable-timing" style="padding: 1.8%">8:00-8:50</td>
+          <td class="timetable-timing" style="padding: 1.8%">9:00-9:50</td>
           <td class="timetable-timing">10:00-10:50</td>
-          <td class="timetable-timing">11:00-11:50</td>
+          <td class="timetable-timing" style="padding: 1.8%">11:00-11:50</td>
           <td class="timetable-timing">12:00-12:50</td>
-          <td class="timetable-timing">1:00-1:30</td>
-          <td class="timetable-timing" rowspan=6>LUNCH</td>
+          <td class="timetable-timing" style="padding: 1.8%">1:00-1:30</td>
+          <td class="timetable-timing" style="padding: 0.8%" rowspan=6>LUNCH</td>
           <td class="timetable-timing">14:00-14:50</td>
           <td class="timetable-timing">15:00-15:50</td>
           <td class="timetable-timing">16:00-16:50</td>
           <td class="timetable-timing">17:00-17:50</td>
           <td class="timetable-timing">18:00-18:50</td>
-          <td class="timetable-timing">17:00-17:30</td>
+          <td class="timetable-timing">19:00-19:30</td>
         </tr>
         <tr class="monday">
           <td class="timetable-header">Monday</td>
@@ -130,7 +147,7 @@
           <td class="td1 l25 inactive"></td>
           <td class="e1 l26 inactive"></td>
           <td class="c1 l27 inactive"></td>
-          <td class=" l28 inactive"></td>
+          <td class="ta1 l28 inactive"></td>
           <td class="tf1 l29 inactive"></td>
           <td class="l30 inactive"></td>
           <td class="f2 l55 inactive"></td>
@@ -144,6 +161,28 @@
     </div>
   </body>
   <script type="text/javascript">
+    var timetableArrange = function(){
+      var courseCode = $('#course-list').val();
+      var courseTitle = $("#course-list option:selected").text().replace(courseCode+"-","");
+      var slot = $("#slot-list").val();
+      var faculty = $("#faculty-list").val();
+      if(slot!=0 && faculty!=0 && courseCode!=0){
+        var data = courseCode+"-"+courseTitle;
+        data += "\n" + slot + "\n" + faculty + "\n" + "Credits: ";
+        $("#courses-selected-list").append("<li>"+data+"</li>");
+        if(slot.charAt(0)=="L"){
+          slot = slot.split("+");
+          alert(slot);
+        }
+        var x = "";
+        for(var i=0;i<slot.length();i++){
+          if(slot.charAt(i) == ','){
+
+          }
+          x += slot.charAt(i);
+        }
+      }
+    };
     $(document).ready(function(){
       $('.course-list-1').select2();
       $('.slot-list-1').select2();
