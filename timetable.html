@@ -5,65 +5,49 @@
     <!--CSS-->
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet">
+    <link href="css/select2.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <!--JS-->
-    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script   src="js/jquery.js"></script>
+    <script src="js/materialize.min.js"></script>
     <script src="js/script.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script src="js/select2.min.js"></script>
   </head>
   <body>
-    <div class="row timetable-title-panel">
-      <div class="col s12 m8 l8">
-        <a href="#"><h4>My FFCS</h4></a>
+    <div class="timetable-menu-list">
+      <div class="close">
+        <i class="fa fa-times" aria-hidden="true" style="color: rgb(127,144,153);font-size: 50px"></i>
       </div>
-      <div class="col s12 m4 l4">
-        <button class="submit-button">Save TimeTable</button>
-        <button class="submit-button">Logout</button>
+      <div class="row">
+        <div class="col s12 m12 l12 push-l1">
+          <select id="course-list" class="course-list-1" name="course-list">
+              <option value="0">Search Course</option>
+              <option value="CSE1002">CSE1002-Problem Solving And Programming</option>
+              <option value="ITE1001">ITE1001-Digital Logic And Microprocessor</option>
+              <option value="ITE1004">ITE1004-Data Structures And Algorithms</option>
+              <option value="MAT1014">MAT1014-Discrete Mathematics And Graph Theory</option>
+              <option value="MAT2001">MAT2001-Statistics For Engineers</option>
+            </select>
+            <select id="slot-list" class="slot-list-1" name="slot-list">
+              <option value="0">Search Slot</option>
+              <option value="L31+L32+L33+L34+L35+L36">L31+L32+L33+L34+L35+L36</option>
+              <option value="A1">A1</option>
+            </select>
+            <select id="faculty-list" class="faculty-list-1" name="faculty-list">
+              <option value="0">Search Faculty</option>
+              <option value="SenthilKumar">Senthil Kumar</option>
+              <option value="Varalakshmi">Varalakshmi</option>
+            </select>
+            <button class="submit-button">Save</button>
+        </div>
       </div>
     </div>
-    <div class="timetable-menu-list row">
-      <div class="col s12 m4 l4 push-l1">
-        <div class="card z-depth-3">
-          <div class="card-content">
-          <form>
-              <div class="row"><select id="course-list" class="course-list-1" name="course-list">
-                  <option value="0">Select Your Course</option>
-                  <option value="CSE1002">CSE1002-Problem Solving And Programming</option>
-                  <option value="ITE1001">ITE1001-Digital Logic And Microprocessor</option>
-                  <option value="ITE1004">ITE1004-Data Structures And Algorithms</option>
-                  <option value="MAT1014">MAT1014-Discrete Mathematics And Graph Theory</option>
-                  <option value="MAT2001">MAT2001-Statistics For Engineers</option>
-                </select>
-              </div>
-              <div class="row">
-                <select id="slot-list" class="slot-list-1" name="slot-list">
-                  <option value="0">Select Your Slot</option>
-                  <option value="L31+L32+L33+L34+L35+L36">L31+L32+L33+L34+L35+L36</option>
-                  <option value="A1">A1</option>
-                </select>
-              </div>
-              <div class="row">
-                <select id="faculty-list" class="faculty-list-1" name="faculty-list">
-                  <option value="0">Select Your Faculty</option>
-                  <option value="SenthilKumar">Senthil Kumar</option>
-                  <option value="Varalakshmi">Varalakshmi</option>
-                </select>
-              </div>
-              <button onclick="timetableArrange()" class="submit-button">Save!</button>
-            </form>
-          </div>
-        </div>
+    <div class="row timetable-title-panel valign-wrapper">
+      <div class="col s12 m8 l8 valign">
+        <a href="#"><h4>My FFCS</h4></a>
       </div>
-      <div class="courses-selected col s12 m6 l6 push-l1">
-        <div class="card z-depth-3">
-          <div class="card-content">
-            <ol id = "courses-selected-list" class="courses-selected-list">
-              <li><h5 style="font-size: 20px">CSE1002-Problem Solving And Programming</h5><p style="font-size: 15px;">L31+L32+L33+L34+L35+L36<br> Credits: 3</p></li>
-            </ol>
-          </div>
-        </div>
+      <div class="col s12 m3 l3 push-l1 valign">
+        <button class="submit-button">Add Course</button>
       </div>
     </div>
     <div class="row timetable">
@@ -76,7 +60,7 @@
           <td class="timetable-timing" style="padding: 1.8%">11:00-11:50</td>
           <td class="timetable-timing">12:00-12:50</td>
           <td class="timetable-timing" style="padding: 1.8%">1:00-1:30</td>
-          <td class="timetable-timing" style="padding: 0.8%" rowspan=6>LUNCH</td>
+          <td class="timetable-timing" style="padding: 0.8%" rowspan=6 style="transform: rotate(270deg)">LUNCH</td>
           <td class="timetable-timing">14:00-14:50</td>
           <td class="timetable-timing">15:00-15:50</td>
           <td class="timetable-timing">16:00-16:50</td>
