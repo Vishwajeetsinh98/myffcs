@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="css/select2.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--JS-->
     <script   src="js/jquery.js"></script>
     <script src="js/materialize.min.js"></script>
@@ -38,16 +39,63 @@
               <option value="SenthilKumar">Senthil Kumar</option>
               <option value="Varalakshmi">Varalakshmi</option>
             </select>
-            <button class="submit-button">Save</button>
+            <button class="submit-button timetable-results-trigger">Save</button>
         </div>
       </div>
     </div>
-    <div class="row timetable-title-panel valign-wrapper">
+    <div class="row timetable-title-panel valign-wrapper" style="padding-bottom: 1%;">
       <div class="col s12 m8 l8 valign">
         <a href="#"><h4>My FFCS</h4></a>
       </div>
       <div class="col s12 m3 l3 push-l1 valign">
         <button class="submit-button">Add Course</button>
+      </div>
+    </div>
+    <div class="row timetable-results">
+      <div class="custom-card z-depth-1 col s12 m3 push-m1 l3 push-l1">
+        <div class="custom-card-header">
+          <div class="custom-card-front">
+            <h5>Introduction To Innovative Projects</h5>
+            <p>Prof. Gandhimati S.N.S.</p></div>
+            <div class="custom-card-edit" style="display:none">
+              <img src="images/edit.png" style="padding-left: 15%;padding-top: 5%;padding-bottom: 5%" class="left" />
+              <img src="images/delete.png" style="padding-right: 15%;padding-top: 5%;padding-bottom: 5%" class="right" />
+            </div>
+        </div>
+        <div class="custom-card-slot row valign-wrapper">
+          <div class="col s10 m10 l10"  style="border-right: 1px solid;border-color: rgb(123,123,123)"><p>PHY1011<span class="right">F2</span></p></div>
+          <div class="col s2 m2 l2 valign custom-card-action front" style="padding: 1%;text-align: center;font-size: 20px;"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="custom-card z-depth-1 col s12 m3 push-m1 l3 push-l1">
+        <div class="custom-card-header">
+          <div class="custom-card-front">
+            <h5>Introduction To Innovative Projects</h5>
+            <p>Prof. Gandhimati S.N.S.</p></div>
+            <div class="custom-card-edit" style="display:none">
+              <img src="images/edit.png" style="padding-left: 15%;padding-top: 5%;padding-bottom: 5%" class="left" />
+              <img src="images/delete.png" style="padding-right: 15%;padding-top: 5%;padding-bottom: 5%" class="right" />
+            </div>
+        </div>
+        <div class="custom-card-slot row valign-wrapper">
+          <div class="col s10 m10 l10"  style="border-right: 1px solid;border-color: rgb(123,123,123)"><p>PHY1011<span class="right">F2</span></p></div>
+          <div class="col s2 m2 l2 valign custom-card-action front" style="padding: 1%;text-align: center;font-size: 20px;"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div class="custom-card z-depth-1 col s12 m3 push-m1 l3 push-l1">
+        <div class="custom-card-header">
+          <div class="custom-card-front">
+            <h5>Introduction To Innovative Projects</h5>
+            <p>Prof. Gandhimati S.N.S.</p></div>
+            <div class="custom-card-edit" style="display:none">
+              <img src="images/edit.png" style="padding-left: 15%;padding-top: 5%;padding-bottom: 5%" class="left" />
+              <img src="images/delete.png" style="padding-right: 15%;padding-top: 5%;padding-bottom: 5%" class="right" />
+            </div>
+        </div>
+        <div class="custom-card-slot row valign-wrapper">
+          <div class="col s10 m10 l10"  style="border-right: 1px solid;border-color: rgb(123,123,123)"><p>PHY1011<span class="right">F2</span></p></div>
+          <div class="col s2 m2 l2 valign custom-card-action front" style="padding: 1%;text-align: center;font-size: 20px;"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
+        </div>
       </div>
     </div>
     <div class="row timetable">
@@ -60,7 +108,7 @@
           <td class="timetable-timing" style="padding: 1.8%">11:00-11:50</td>
           <td class="timetable-timing">12:00-12:50</td>
           <td class="timetable-timing" style="padding: 1.8%">1:00-1:30</td>
-          <td class="timetable-timing" style="padding: 0.8%" rowspan=6 style="transform: rotate(270deg)">LUNCH</td>
+          <td class="timetable-timing" style="padding: 0%;" rowspan=6><p style="letter-spacing: 7px;transform: rotate(270deg)">LUNCH</p></td>
           <td class="timetable-timing">14:00-14:50</td>
           <td class="timetable-timing">15:00-15:50</td>
           <td class="timetable-timing">16:00-16:50</td>
@@ -140,6 +188,74 @@
           <td class="tf2 l58 inactive"></td>
           <td class="tdd2 l59 inactive"></td>
           <td class="l60 inactive"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="row timetable-selected-list z-depth-1">
+      <table class="timetable-selected-table table centered">
+        <tr class="timetable-selected-headings">
+          <td>S.No.</td>
+          <td>Course Code</td>
+          <td>Course Name<br><span class="sub-text">Course Type</span></td>
+          <td>Slot</td>
+          <td>Faculty<br><span class="sub-text">School</span></td>
+          <td></td>
+        </tr>
+        <tr class="timetable-selected-subject">
+          <td>1</td>
+          <td>CSE1002</td>
+          <td>Problem Solving And Programming<br><span class="sub-text-inside">Lab Only</span></td>
+          <td>L1 + L2 + L11  + L12 + L21 + L22</td>
+          <td><p class="timetable-selected-faculty">Prof. Nagaraja Rao</p><br><span class="sub-text-inside">SCOPE</span></td>
+          <td><i class="small material-icons">delete</i></td>
+        </tr>
+        <tr class="timetable-selected-subject">
+          <td>2</td>
+          <td>CSE1002</td>
+          <td>Problem Solving And Programming<br><span class="sub-text-inside">Lab Only</span></td>
+          <td>L1 + L2 + L11  + L12 + L21 + L22</td>
+          <td class=""><p class="timetable-selected-faculty">Prof. Nagaraja Rao</p><br><span class="sub-text-inside">SCOPE</span></td>
+          <td><i class="small material-icons">delete</i></td>
+        </tr>
+        <tr class="timetable-selected-subject">
+          <td>3</td>
+          <td>CSE1002</td>
+          <td>Problem Solving And Programming<br><span class="sub-text-inside">Lab Only</span></td>
+          <td>L1 + L2 + L11  + L12 + L21 + L22</td>
+          <td class=""><p class="timetable-selected-faculty">Prof. Nagaraja Rao</p><br><span class="sub-text-inside">SCOPE</span></td>
+          <td><i class="small material-icons">delete</i></td>
+        </tr>
+        <tr class="timetable-selected-subject">
+          <td>4</td>
+          <td>CSE1002</td>
+          <td>Problem Solving And Programming<br><span class="sub-text-inside">Lab Only</span></td>
+          <td>L1 + L2 + L11  + L12 + L21 + L22</td>
+          <td class=""><p class="timetable-selected-faculty">Prof. Nagaraja Rao</p><br><span class="sub-text-inside">SCOPE</span></td>
+          <td><i class="small material-icons">delete</i></td>
+        </tr>
+        <tr class="timetable-selected-subject">
+          <td>5</td>
+          <td>CSE1002</td>
+          <td>Problem Solving And Programming<br><span class="sub-text-inside">Lab Only</span></td>
+          <td>L1 + L2 + L11  + L12 + L21 + L22</td>
+          <td class=""><p class="timetable-selected-faculty">Prof. Nagaraja Rao</p><br><span class="sub-text-inside">SCOPE</span></td>
+          <td><i class="small material-icons">delete</i></td>
+        </tr>
+        <tr class="timetable-selected-subject">
+          <td>6</td>
+          <td>CSE1002</td>
+          <td>Problem Solving And Programming<br><span class="sub-text-inside">Lab Only</span></td>
+          <td>L1 + L2 + L11  + L12 + L21 + L22</td>
+          <td class=""><p class="timetable-selected-faculty">Prof. Nagaraja Rao</p><br><span class="sub-text-inside">SCOPE</span></td>
+          <td><i class="small material-icons">delete</i></td>
+        </tr>
+        <tr class="timetable-selected-subject">
+          <td>7</td>
+          <td>CSE1002</td>
+          <td>Problem Solving And Programming<br><span class="sub-text-inside">Lab Only</span></td>
+          <td>L1 + L2 + L11  + L12 + L21 + L22</td>
+          <td class=""><p class="timetable-selected-faculty">Prof. Nagaraja Rao</p><br><span class="sub-text-inside">SCOPE</span></td>
+          <td><i class="small material-icons">delete</i></td>
         </tr>
       </table>
     </div>
