@@ -8,6 +8,10 @@ body{
   font-family: 'Roboto';
   overflow-x: hidden;
 }
+select span{
+  min-width: 200px !important;
+}
+.select2-container--default {min-width: 200px;}
 .login-holder{
   width: 75%;
   padding: 5%;
