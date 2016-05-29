@@ -118,6 +118,11 @@ select span{
   text-align: left;
   background-color: rgb(73,97,109);
   font-size: 18px;
+  /*position: fixed;*/
+}
+.valign-wrapper{
+  padding: 0px;
+  margin: 0px;
 }
 .timetable-title-panel a{
   text-decoration: none;
@@ -200,9 +205,55 @@ select span{
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
     background-color: rgb(127,144,153);
 }
+
+.timetable-results{
+  background: rgb(96,125,139);
+  padding: 3%;
+  font-size: 15px;
+  margin-top: 0px;
+  overflow-x: scroll;
+}
+.timetable-results .custom-card h5{
+  font-size: 18px;
+  font-weight: 500;
+}
+.timetable-results .custom-card{
+  background: white;
+  font-size: 15px;
+  border-radius: 2px;
+  margin-right: 5%;
+}
+.timetable-results .custom-card-slot{
+  height: 10%;
+  padding: 0px;
+  color: rgb(123,123,123);
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  left: -3.8%;
+  width: 107.5%;
+  font-size: 15px;
+  font-weight: 400;
+  border-top: 1px solid;
+  border-color: rgb(123,123,123);
+  background-color: rgb(233,233,233);
+}
+.timetable-results .front:hover{
+  cursor: pointer;
+}
+.timetable-results .edit:hover{
+  cursor: pointer;
+}
+.timetable-results .custom-card-action-active:hover{
+  cursor: pointer;
+}
+.timetable-results{
+
+}
 .timetable{
   color: white;
   font-size: 18px;
+  padding: 2%;
 }
 .timetable .timetable-timing{
   background-color: #8faec2;
@@ -235,4 +286,52 @@ select span{
 }
 .timetable .active{
   background: #00e676;
+}
+.timetable td{
+  border-radius: 0px!important;
+}
+
+.timetable-selected-list{
+  margin: 3%!important;
+}
+.timetable-selected-list .timetable-selected-table .timetable-selected-headings{
+  background-color: rgb(73,97,109);
+  color: white;
+}
+.sub-text{
+  font-weight: 200;
+  font-size: 15px;
+}
+.sub-text-inside{
+  font-weight: 300;
+  font-size: 15px;
+  color: #666;
+}
+.timetable-selected-list table{
+  border-radius: 5px;
+}
+.timetable-selected-list td{
+  border-radius: 0px;
+}
+.timetable-selected-subject{
+  background: white;
+}
+.timetable-selected-faculty{
+  border-right: 1px solid grey;
+}
+.timetable-selected-subject{
+  background: white;
+}
+.timetable-selected-subject:hover{
+  background: rgb(0,233,143);
+  transition: 0.3s;
+}
+.timetable-selected-subject:after{
+  background: white;
+  transition: 0.3s;
+}
+.material-icons:hover{
+  cursor: pointer;
+  margin: 0px!important;
+  padding: 0px!important;
 }
