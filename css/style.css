@@ -20,6 +20,9 @@ select span{
 .login-holder form{
   padding: 10%;
 }
+.login-holder .register-form{
+  border-left: 1px solid #ddd;
+}
 .login-holder button{
   padding: 0px;
   width: 100%;
