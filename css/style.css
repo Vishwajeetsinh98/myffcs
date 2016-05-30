@@ -29,11 +29,8 @@ select span{
   position: absolute;
   bottom: 0px;
   left: 0px;
-  /*top: 76.5%;
-  margin-left: -56.1%;*/
   color: white;
   font-weight: bold;
-  /*margin-top: 7%;*/
 }
 .login-holder button:focus{
   border: none;
@@ -96,7 +93,6 @@ select span{
     margin-left: -8px;
     padding-left: 12px;
     font-size: 8px;
-    border-left: 1px solid #ddd;
   }
   .login-holder .register-form label{
     font-size: 10px;
@@ -314,6 +310,7 @@ select span{
   background: rgb(250,77,92);
 }
 .timetable .number{
+  font-family: 'Montserrat';
   position: relative;
   top: -20px;
   right: -2px;
