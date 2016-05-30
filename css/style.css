@@ -20,9 +20,6 @@ select span{
 .login-holder form{
   padding: 10%;
 }
-.login-holder .register-form{
-  border-left: 1px solid #ddd;
-}
 .login-holder button{
   padding: 0px;
   width: 100%;
@@ -175,6 +172,7 @@ select span{
   background: rgb(73,97,109);
   width: 100%;
   padding: 3%;
+  position: absolute;
 }
 .timetable-menu-list .course-list-1{
   width: 30%;
@@ -274,9 +272,6 @@ select span{
 .timetable-results .custom-card-action-active:hover{
   cursor: pointer;
 }
-.timetable-results{
-
-}
 .timetable{
   color: white;
   font-size: 18px;
@@ -286,45 +281,58 @@ select span{
 .timetable .timetable-timing{
   background-color: #8faec2;
   padding: 1.5%;
+  background: rgb(220,225,227);
+  color: rgb(153,153,153);
+  font-weight: 400;
+}
+.timetable .timetable-header{
+  border: 1px solid rgba(128,128,128,0.2);
+  background: rgb(220,225,227);
+  padding: 2%;
+  background: rgb(220,225,227);
+  color: rgb(153,153,153);
+  font-weight: 400;
 }
 .timetable td{
   border: 1px solid;
   border-color: rgba(128,128,128,0.2);
-  border-bottom: 2px solid white;
-  padding: 1%;
+  text-align: center;
 }
-.timetable .timetable-header{
-  border-bottom: 2px solid white!important;
-  border: 1px solid rgba(128,128,128,0.2);
-  background: #8faec2;
-  padding: 2%;
-}
-
-.timetable .inactive{
-  padding: 2.5%;
-}
-.timetable .inactive:nth-child(even){
-  background: #ddd;
-  padding: 3%;
+.timetable .unselected{
+  background: white;
+  color: rgb(153,153,153);
 }
 .timetable-seminar{
   padding: 2%;
   color: #555;
   text-align: center;
 }
-.timetable .active{
+.timetable .selected{
   background: #00e676;
 }
-.timetable td{
-  border-radius: 0px!important;
+.timetable .clash{
+  background: rgb(250,77,92);
+}
+.timetable .number{
+  position: relative;
+  top: -20px;
+  right: -2px;
+  text-align: center;
+  font-size: 1em;
+  border-radius: 50%;
+  background: white;
 }
 
 .timetable-selected-list{
-  margin: 3%!important;
+  margin: 6%!important;
+  border-radius: 2px;
 }
 .timetable-selected-list .timetable-selected-table .timetable-selected-headings{
   background-color: rgb(73,97,109);
   color: white;
+}
+.timetable-selected-table{
+  font-family: 'Montserrat';
 }
 .sub-text{
   font-weight: 200;
