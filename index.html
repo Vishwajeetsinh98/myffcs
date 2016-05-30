@@ -1,9 +1,11 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width" />
     <title>My FFCS|Login</title>
     <!--CSS-->
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
     <!--JS-->
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
@@ -12,13 +14,13 @@
   <body>
     <div class="login-holder">
       <div class="row">
-        <div class="col l8 m8 s12 push-l4">
+        <div class="col l8 m8 s8 push-l4 push-m4 push-s4 ">
           <h4>My FFCS</h4>
           <div class="card z-depth-3">
             <div class="card-content">
               <div class="row">
-                <div class="col s6 m6 l6">
-                  <form>
+                <div class="col s6 m6 l6 pull-s1">
+                  <form class="login-form">
                     <div class="row">
                       <div class="input-field">
                         <input id="login-regnum" type="text" name="login-regnum">
@@ -34,7 +36,7 @@
                   </form>
                 </div>
                 <div class="col s6 m6 l6">
-                  <form style="border-left: 1px solid #ddd">
+                  <form class="register-form">
                     <div class="row">
                       <div class="input-field">
                         <input id="reg-name" type="text" name="reg-name">
@@ -61,5 +63,6 @@
         </div>
       </div>
     </div>
+  </div>
   </body>
 </html>
