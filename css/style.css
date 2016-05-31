@@ -57,11 +57,11 @@ select span{
   border: none;
 }
 /*Styling For Mobile Devices*/
-@media screen and (max-width:600px)
-{
+@media screen and (max-width:600px){
   body
   {
     font-size: 20px;
+    /*overflow-x: hidden!important;*/
   }
   .login-holder
   {
@@ -127,6 +127,106 @@ select span{
     background-color: #00ac37;
     padding: 2%;
     border: none;
+  }
+  .timetable-title-panel{
+    width: 100vw;
+  }
+  .timetable-title-panel h4{
+    font-size: 25px!important;
+  }
+  .timetable-title-panel .submit-button{
+    margin-left: 45%;
+    font-size: 12px;
+    padding: 1.95%;
+  }
+  .timetable-menu-list .submit-button{
+    display: block;
+    margin-top: 2%;
+    width: 100%!important;
+    position: relative;
+    left: -1.6%;
+  }
+  .timetable-results{
+    height: 50vw;
+    overflow-x: scroll;
+    clear: both;
+  }
+  .timetable-results .custom-card{
+    margin-top: 2%;
+    margin-left: 5%;
+    padding: 1%;
+  }
+  .timetable-results .custom-card-edit{
+    width: 250%!important;
+    padding: 0%!important;
+  }
+  .timetable-results .custom-card-edit .save-tt{
+    padding: 0%!important;
+    padding-left: 5%!important;
+    padding-top: 2%!important;
+    padding-bottom: 2%!important;
+  }
+  .timetable-results .custom-card-edit img:nth-child(2){
+    padding-right: 5%!important;
+    padding-top: 2%!important;
+    padding-bottom: 2%!important;
+    position: relative;
+    left: -60%;
+  }
+  .timetable-results .custom-card-slot{
+    padding: 1%;
+    width: 102%!important;
+    position: relative;
+    left: -3px!important;
+    height: 35px!important;
+  }
+  .timetable-results .custom-card-action{
+    padding: 1%!important;
+  }
+  .timetable-results .custom-card:nth-child(1){
+    margin-top: 0%;
+  }
+  .timetable{
+    font-size: 10px!important;
+    overflow-x: scroll;
+  }
+  .timetable-selected-list{
+    padding: 0%!important;
+    font-size: 8px!important;
+    width: 90%!important;
+    position: relative;
+    left: -10px;
+  }
+  .timetable-selected-table{
+    padding: 0%!important;
+    margin-left: 0%!important;
+  }
+  .timetable-selected-table td{
+    font-size: 8px!important;
+  }
+  .timetable-selected-headings td:nth-child(6){
+    padding: 0%!important;
+    width: 10%!important;
+  }
+  .timetable-selected-headings td:nth-child(4),.timetable-selected-headings td:nth-child(5){
+    padding: 8%!important;
+    margin: 0px!important;
+    text-align: center!important;
+  }
+  .timetable-selected-table .sub-text{
+    font-size: 6px!important;
+    font-weight: 200;
+  }
+  .timetable-selected-table .sub-text-inside{
+    font-size: 6px!important;
+    color: #666;
+  }
+  .timetable-selected-table .material-icons{
+    font-size: 10px;
+  }
+  .timetable-selected-subject td:nth-child(1){
+    padding: 3%!important;
+    font-size: 9px!important;
   }
 }
 
@@ -233,6 +333,16 @@ select span{
   font-size: 15px;
   margin-top: 0px;
   overflow-x: scroll;
+}
+.timetable-results .custom-card-edit .save-tt{
+  padding-left: 15%;
+  padding-top: 5%;
+  padding-bottom: 5%
+}
+.timetable-results .custom-card-edit img:nth-child(2){
+  padding-right: 15%;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 .timetable-results .custom-card h5{
   font-size: 18px;
@@ -345,6 +455,9 @@ select span{
 }
 .timetable-selected-list td{
   border-radius: 0px;
+}
+.timetable-selected-subject td:nth-child(1){
+  padding: 2%;
 }
 .timetable-selected-subject{
   background: white;
