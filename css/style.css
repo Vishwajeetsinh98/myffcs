@@ -139,6 +139,9 @@ select span{
     font-size: 12px;
     padding: 1.95%;
   }
+  .timetable-menu-list .fa-times{
+    font-size: 25px!important;
+  }
   .timetable-menu-list .submit-button{
     display: block;
     margin-top: 2%;
