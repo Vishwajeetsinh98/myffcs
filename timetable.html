@@ -283,7 +283,11 @@
           $("."+slot).removeClass("unselected");
           $('.'+slot+" .number").css("color","#00e676");
           $('.'+slot+" .number").html(count);
-          $('<tr class="timetable-selected-subject"><td>'+(count)+'</td><td>'+courseCode+'</td><td>'+courseTitle+'<br><span class="sub-text-inside">Lab Only</span></td><td>'+slot.toUpperCase()+'</td><td class=""><p class="timetable-selected-faculty">'+faculty+'</p><span class="sub-text-inside">SCOPE</span></td><td><i class="small material-icons">delete</i></td></tr>').insertAfter('.timetable-selected-subject:nth-child('+count+")");
+          if(count==1)
+            $('<tr class="timetable-selected-subject"><td>'+count+'</td><td>'+courseCode+'</td><td>'+courseTitle+'<br><span class="sub-text-inside">Lab Only</span></td><td>'+slot.toUpperCase()+'</td><td class=""><p class="timetable-selected-faculty">'+faculty+'</p><span class="sub-text-inside">SCOPE</span></td><td><i class="small material-icons">delete</i></td></tr>').insertAfter('.timetable-selected-headings');
+          else {
+            $('<tr class="timetable-selected-subject"><td>'+count+'</td><td>'+courseCode+'</td><td>'+courseTitle+'<br><span class="sub-text-inside">Lab Only</span></td><td>'+slot.toUpperCase()+'</td><td class=""><p class="timetable-selected-faculty">'+faculty+'</p><span class="sub-text-inside">SCOPE</span></td><td><i class="small material-icons">delete</i></td></tr>').insertAfter('.timetable-selected-subject:nth-child('+count+")");
+          }
         }
       } else{
         var isClashing = false;
@@ -305,14 +309,74 @@
             $('.'+tempSlot+" .number").css("color","#00e676");
             $('.'+tempSlot+" .number").html(count);
           }
-          $('<tr class="timetable-selected-subject"><td>'+(count)+'</td><td>'+courseCode+'</td><td>'+courseTitle+'<br><span class="sub-text-inside">Lab Only</span></td><td>'+slot.join('+').toUpperCase()+'</td><td class=""><p class="timetable-selected-faculty">'+faculty+'</p><span class="sub-text-inside">SCOPE</span></td><td><i class="small material-icons">delete</i></td></tr>').insertAfter('.timetable-selected-subject:nth-child('+count+")");
+          if(count==1){
+            $('<tr class="timetable-selected-subject"><td>'+(count)+'</td><td>'+courseCode+'</td><td>'+courseTitle+'<br><span class="sub-text-inside">Lab Only</span></td><td>'+slot.join('+').toUpperCase()+'</td><td class=""><p class="timetable-selected-faculty">'+faculty+'</p><span class="sub-text-inside">SCOPE</span></td><td><i class="small material-icons">delete</i></td></tr>').insertAfter('.timetable-selected-headings');
+          } else{
+            $('<tr class="timetable-selected-subject"><td>'+(count)+'</td><td>'+courseCode+'</td><td>'+courseTitle+'<br><span class="sub-text-inside">Lab Only</span></td><td>'+slot.join('+').toUpperCase()+'</td><td class=""><p class="timetable-selected-faculty">'+faculty+'</p><span class="sub-text-inside">SCOPE</span></td><td><i class="small material-icons">delete</i></td></tr>').insertAfter('.timetable-selected-subject:nth-child('+count+")");
+          }
         }
       }
+    });
+    $(document).on('click', '.timetable-selected-subject .material-icons',function(){
+      var slot = $(this).closest($('.timetable-selected-subject')).find($('.timetable-selected-subject td:nth-child(4)')).text();
+      slot = slot.split('+');
+      for(var i in slot){
+        var tempSlot = slot[i].replace(' ','').toLowerCase();
+        $('.'+tempSlot).addClass('unselected').removeClass('selected').removeClass('clash');
+        $('.'+tempSlot+' .number').html("");
+      }
+      $(this).closest($('.timetable-selected-subject')).remove();
+      count--;
     });
     $(document).ready(function(){
       $('.course-list-1').select2();
       $('.slot-list-1').select2();
       $('.faculty-list-1').select2();
+      /*$('.timetable-results').carousel({
+        visible: 3,
+        itemMinWidth: 180,
+        itemEqualHeight: 370,
+        itemMargin: 9,
+      });*/
+
+    });
+    $(".course-list-1").change(function(){
+      var search = $('.course-list-1').select2('data')[0]['text'];
+      var code = search.split('-')[0];
+      $.ajax({
+        url: 'http://gdgvitvellore9.cloudapp.net:8000/course/getbycoursecode/?q='+code,
+        datatype: 'json',
+        success: function(data){
+          $('.slot-list-1').empty();
+          $('.faculty-list-1').empty();
+          for(var i in data){
+            $('.slot-list-1').append('<option>'+data[i].slot+'</option>');
+            $('.faculty-list-1').append('<option>'+data[i].faculty+'</option>');
+          }
+        },
+        error: function(){
+          alert('Ajax failure');
+        }
+      });
+    });
+    $('.faculty-list-1').change(function(){
+      var search = $('.faculty-list-1').select2('data')[0]['text']
+      alert(search);
+      $.ajax({
+        url: 'http://gdgvitvellore9.cloudapp.net:8000/course/getbyfaculty/?q='+search,
+        datatype: 'json',
+        success: function(data){
+          $('.slot-list-1').empty();
+          $('.faculty-list-1').empty();
+          for(var i in data){
+            $('.slot-list-1').append('<option>'+data[i].slot+'</option>');
+            $('.faculty-list-1').append('<option>'+data[i].faculty+'</option>');
+          }
+        },
+        error: function(){
+          alert('Ajax failure');
+        }
+      });
     });
   </script>
 </html>

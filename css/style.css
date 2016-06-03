@@ -152,7 +152,7 @@ select span{
   .timetable-results{
     height: 50vw;
     overflow-x: scroll;
-    clear: both;
+    width: 100vw;
   }
   .timetable-results .custom-card{
     margin-top: 2%;
@@ -245,6 +245,9 @@ select span{
 .valign-wrapper{
   padding: 0px;
   margin: 0px;
+}
+.timetable-title-panel{
+  width: 100vw;
 }
 .timetable-title-panel a{
   text-decoration: none;

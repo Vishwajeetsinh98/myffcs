@@ -45,35 +45,13 @@ $(document).ready(function(){
     });
   });
 
-
-  /*Responsiveness*/
-  /*var Window_ht=$(window).height();
-  var Window_wt=$(window).width();
-  if(Window_wt<1000){
-      $(".timetable").css("width",Window_wt/2.5);
-  }
-  else if(Window_wt>1000 && Window_wt<1100)
-  {
-    $(".timetable").css("width",Window_wt/2);
-  }
-  else {
-      $(".timetable").css("width","96%");
-  }
-});*/
+  if($(window).width()>1100)
+    $('.timetable').css("width","96%");
+  
 });
-/*$(window).resize(function()
+$(window).resize(function()
 {
-  /*Responsiveness*/
-  /*var Window_ht=$(window).height();
-  var Window_wt=$(window).width();
-  if(Window_wt<1000){
-      $(".timetable").css("width",Window_wt/2.5);
+  if($(window).width()>1100){
+    $('.timetable').css("width","96%");
   }
-  else if(Window_wt>1000 && Window_wt<1100)
-  {
-    $(".timetable").css("width",Window_wt/2);
-  }
-  else {
-      $(".timetable").css("width","96%");
-  }
-});*/
+});
