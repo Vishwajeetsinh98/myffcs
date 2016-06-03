@@ -2,7 +2,9 @@ $(document).ready(function(){
   $('.timetable-menu-list').slideUp(0);
   $('.timetable-results').slideUp(0);
   $(".timetable-title-panel .submit-button").click(function(){
-    $(".timetable-menu-list").slideDown(400);
+    $('.timetable-results').slideUp(400,function(){
+      $(".timetable-menu-list").slideDown(400);
+    });
   });
   $(".close").click(function(){
     $(".timetable-menu-list").slideUp(400);
@@ -26,7 +28,8 @@ $(document).ready(function(){
       $(this).addClass("edit");
       $(this).removeClass("front");
       if(windowWidth<=600){
-        $(this).closest($('.custom-card')).width($(this).closest($('.custom-card')).find($('.custom-card-edit')).width());
+        //$(this).closest($('.custom-card')).width($(this).closest($('.custom-card')).find($('.custom-card-edit')).width());
+        $(this).closest($('.custom-card')).css('width','270px');
       }
     } else{
       $(this).closest($('.custom-card')).find($(".custom-card-edit")).hide();
@@ -47,7 +50,7 @@ $(document).ready(function(){
 
   if($(window).width()>1100)
     $('.timetable').css("width","96%");
-  
+
 });
 $(window).resize(function()
 {

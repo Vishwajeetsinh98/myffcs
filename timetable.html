@@ -98,7 +98,7 @@
             </div>
         </div>
         <div class="custom-card-slot row valign-wrapper">
-          <div class="col s10 m10 l10"  style="border-right: 1px solid;border-color: rgb(123,123,123)"><p class="course-code">PHY1011<span class="right">L1+L2</span></p></div>
+          <div class="col s10 m10 l10"  style="border-right: 1px solid;border-color: rgb(123,123,123)"><p class="course-code">PHY1011<span class="right">G1</span></p></div>
           <div class="col s2 m2 l2 valign custom-card-action front" style="padding: 1%;text-align: center;font-size: 20px;"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>
         </div>
       </div>
@@ -187,7 +187,7 @@
           <td class="ta1 l28 unselected">TA1/L28<span class="number"></span></td>
           <td class="tf1 l29 unselected">TF1/L29<span class="number"></span></td>
           <td class="l30 unselected">L30<span class="number"></span></td>
-          <td class="f2 l55 unselected">F2/L55<span class="number"></span></td>
+          <td class="e2 l55 unselected">E2/L55<span class="number"></span></td>
           <td class="c2 l56 unselected">C2/L56<span class="number"></span></td>
           <td class="ta2 l57 unselected">TA2/L57<span class="number"></span></td>
           <td class="tf2 l58 unselected">TF2/L58<span class="number"></span></td>
@@ -329,6 +329,23 @@
       }
       $(this).closest($('.timetable-selected-subject')).remove();
       count--;
+      var index=1;
+      var current = $('.timetable-selected-subject');
+      for(var i=1;i<=$('.timetable-selected-subject').length;i++){
+        $(current).find($('td:nth-child(1)')).html(index);
+        var slot = $(current).find($('td:nth-child(4)')).html();
+        slot = slot.split('+');
+        for(var j=0;j<slot.length;j++){
+          var tempSlot = slot[j];
+          tempSlot = tempSlot.toLowerCase();
+          $('.'+tempSlot+' .number').html(index);
+        }
+        current = current.next($('.timetable-selected-subject'));
+        index++;
+      }
+    });
+    $(document).on('click','.custom-card-edit img:nth-child(2)',function(){
+      $(this).closest($('.custom-card')).remove();
     });
     $(document).ready(function(){
       $('.course-list-1').select2();
@@ -360,12 +377,13 @@
       $.ajax({
         url: 'http://gdgvitvellore9.cloudapp.net:8000/course/getbycoursecode/?q='+code,
         datatype: 'json',
-        success: function(data){
+        type: 'GET',
+        success: function(response){
           $('.slot-list-1').empty();
           $('.faculty-list-1').empty();
           for(var i in data){
-            $('.slot-list-1').append('<option>'+data[i].slot+'</option>');
-            $('.faculty-list-1').append('<option>'+data[i].faculty+'</option>');
+            $('.slot-list-1').append('<option>'+response.data[i].slot+'</option>');
+            $('.faculty-list-1').append('<option>'+response.data[i].faculty+'</option>');
           }
         },
         error: function(){
@@ -374,17 +392,17 @@
       });
     });
     $('.faculty-list-1').change(function(){
-      var search = $('.faculty-list-1').select2('data')[0]['text']
-      alert(search);
+      var search = $('.faculty-list-1').select2('data')[0]['text'];
       $.ajax({
         url: 'http://gdgvitvellore9.cloudapp.net:8000/course/getbyfaculty/?q='+search,
         datatype: 'json',
-        success: function(data){
+        type: 'GET',
+        success: function(response){
           $('.slot-list-1').empty();
           $('.faculty-list-1').empty();
           for(var i in data){
-            $('.slot-list-1').append('<option>'+data[i].slot+'</option>');
-            $('.faculty-list-1').append('<option>'+data[i].faculty+'</option>');
+            $('.slot-list-1').append('<option>'+response.data[i].slot+'</option>');
+            $('.faculty-list-1').append('<option>'+response.data[i].faculty+'</option>');
           }
         },
         error: function(){
