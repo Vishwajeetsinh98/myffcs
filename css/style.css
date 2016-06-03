@@ -279,10 +279,10 @@ select span{
 .timetable-menu-list .course-list-1{
   width: 30%;
 }
-.timetable-menu-list .slot-list-1{
+/*.timetable-menu-list .slot-list-1{
   width: 15%;
   margin-left: 10px;
-}
+}*/
 .timetable-menu-list .faculty-list-1{
   width: 30%;
   margin-left: 10px;

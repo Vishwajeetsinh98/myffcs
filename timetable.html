@@ -25,7 +25,7 @@
         <i class="fa fa-times" aria-hidden="true" style="color: rgb(127,144,153);font-size: 50px"></i>
       </div>
       <div class="row">
-        <div class="col s12 m12 l12 push-l3">
+        <div class="col s12 m12 l12 push-l4">
           <select id="course-list" class="course-list-1" name="course-list" style="min-width: 200px">
               <option value="0">Search Course</option>
               <option value="CSE1002">CSE1002-Problem Solving And Programming</option>
@@ -34,17 +34,17 @@
               <option value="MAT1014">MAT1014-Discrete Mathematics And Graph Theory</option>
               <option value="MAT2001">MAT2001-Statistics For Engineers</option>
             </select>
-            <select id="slot-list" class="slot-list-1" name="slot-list" style="min-width: 200px">
+            <!--select id="slot-list" class="slot-list-1" name="slot-list" style="min-width: 200px">
               <option value="0">Search Slot</option>
               <option value="L31+L32+L33+L34+L35+L36">L31+L32+L33+L34+L35+L36</option>
               <option value="A1">A1</option>
-            </select>
+            </select-->
             <select id="faculty-list" class="faculty-list-1" name="faculty-list" style="min-width: 200px">
               <option value="0">Search Faculty</option>
               <option value="SenthilKumar">Senthil Kumar</option>
               <option value="Varalakshmi">Varalakshmi</option>
             </select>
-            <button class="submit-button timetable-results-trigger">Save</button>
+            <button class="submit-button timetable-results-trigger">Search</button>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
             <h5 class="course-title">Introduction To Innovative Projects</h5>
             <p class="course-faculty">Prof. Gandhimati S.N.S.</p></div>
             <div class="custom-card-edit" style="display:none">
-              <img src="images/edit.png" class="save-tt" style="padding-left: 15%;padding-top: 5%;padding-bottom: 5%" class="left" />
+              <img src="images/add.png" class="save-tt" style="padding-left: 15%;padding-top: 5%;padding-bottom: 5%" class="left" />
               <img src="images/delete.png" style="padding-right: 15%;padding-top: 5%;padding-bottom: 5%" class="right" />
             </div>
         </div>
@@ -78,7 +78,7 @@
             <h5 class="course-title">Introduction To Innovative Projects</h5>
             <p class="course-faculty">Prof. Gandhimati S.N.S.</p></div>
             <div class="custom-card-edit" style="display:none">
-              <img src="images/edit.png" class="save-tt" style="padding-left: 15%;padding-top: 5%;padding-bottom: 5%" class="left" />
+              <img src="images/add.png" class="save-tt" style="padding-left: 15%;padding-top: 5%;padding-bottom: 5%" class="left" />
               <img src="images/delete.png" style="padding-right: 15%;padding-top: 5%;padding-bottom: 5%" class="right" />
             </div>
         </div>
@@ -93,7 +93,7 @@
             <h5 class="course-title">Introduction To Innovative Projects</h5>
             <p class="course-faculty">Prof. Gandhimati S.N.S.</p></div>
             <div class="custom-card-edit" style="display:none">
-              <img src="images/edit.png" class="save-tt" class="left" />
+              <img src="images/add.png" class="save-tt" class="left" />
               <img src="images/delete.png" class="right" />
             </div>
         </div>
@@ -334,11 +334,17 @@
       for(var i=1;i<=$('.timetable-selected-subject').length;i++){
         $(current).find($('td:nth-child(1)')).html(index);
         var slot = $(current).find($('td:nth-child(4)')).html();
-        slot = slot.split('+');
-        for(var j=0;j<slot.length;j++){
-          var tempSlot = slot[j];
-          tempSlot = tempSlot.toLowerCase();
-          $('.'+tempSlot+' .number').html(index);
+        if(slot.charAt(0)=='l'){
+          slot = slot.split('+');
+          for(var j=0;j<slot.length;j++){
+            var tempSlot = slot[j];
+            tempSlot = tempSlot.toLowerCase();
+            $('.'+tempSlot+' .number').html(index);
+          }
+        }
+        else{
+          slot = slot.toLowerCase();
+          $('.'+slot+' .number').html(index);
         }
         current = current.next($('.timetable-selected-subject'));
         index++;
@@ -349,7 +355,7 @@
     });
     $(document).ready(function(){
       $('.course-list-1').select2();
-      $('.slot-list-1').select2();
+      //$('.slot-list-1').select2();
       $('.faculty-list-1').select2();
       /*$('.timetable-results').slick({
         dots: false,
@@ -380,9 +386,11 @@
         type: 'GET',
         success: function(response){
           $('.slot-list-1').empty();
+          //$('.slot-list-1').append('<option value="0">Search Slot</option>');
           $('.faculty-list-1').empty();
-          for(var i in data){
-            $('.slot-list-1').append('<option>'+response.data[i].slot+'</option>');
+          $('.faculty-list-1').append('<option value="0">Search Faulty</option>');
+          for(var i in response.data){
+            //$('.slot-list-1').append('<option>'+response.data[i].slot+'</option>');
             $('.faculty-list-1').append('<option>'+response.data[i].faculty+'</option>');
           }
         },
@@ -391,7 +399,7 @@
         }
       });
     });
-    $('.faculty-list-1').change(function(){
+    $(document).on('change','.faculty-list-1',function(){
       var search = $('.faculty-list-1').select2('data')[0]['text'];
       $.ajax({
         url: 'http://gdgvitvellore9.cloudapp.net:8000/course/getbyfaculty/?q='+search,
@@ -399,14 +407,35 @@
         type: 'GET',
         success: function(response){
           $('.slot-list-1').empty();
-          $('.faculty-list-1').empty();
-          for(var i in data){
-            $('.slot-list-1').append('<option>'+response.data[i].slot+'</option>');
-            $('.faculty-list-1').append('<option>'+response.data[i].faculty+'</option>');
+          //$('.slot-list-1').append('<option value="0">Select Slot</option>');
+          $('.course-list-1').empty();
+          $('.course-list-1').append('<option value="0">Select Course</option>');
+          for(var i in response.data){
+            //$('.slot-list-1').append('<option value="'+response.data[i].slots+'">'+response.data[i].slots+'</option>');
+            var courseCode = response.data[i].courseCode.split('-').join('');
+            var courseTitle = response.data[i].name;
+            var course = courseCode+'-'+courseTitle;
+            $('.course-list-1').append('<option value="'+courseCode+'">'+course+'</option>');
           }
         },
         error: function(){
           alert('Ajax failure');
+        }
+      });
+    });
+    $(document).on('click','.timetable-menu-list .submit-button',function(){
+      var courseCode = $('.course-list-1').select2('data')[0]['text'].split('-')[0];
+      //var slot = $('.slot-list-1').select2('data')[0]['text'];
+      var faculty = $('.faculty-list-1').select2('data')[0]['text'];
+      $.ajax({
+        url: 'http://gdgvitvellore9.cloudapp.net:8000/course/getbyall/',
+        type: 'GET',
+        datatype: 'json',
+        success: function(){
+          $('.timetable-results').empty();
+        },
+        error: function(){
+          alert('Ajax Error');
         }
       });
     });
