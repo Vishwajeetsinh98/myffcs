@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $('.timetable-menu-list').slideUp(0);
   $('.timetable-results').slideUp(0);
-  $(".timetable-title-panel .submit-button").click(function(){
+  /*$(".timetable-title-panel .submit-button").click(function(){
     $('.timetable-results').slideUp(400,function(){
       $(".timetable-menu-list").slideDown(400);
     });
@@ -9,7 +9,7 @@ $(document).ready(function(){
   $(".close").click(function(){
     $(".timetable-menu-list").slideUp(400);
     $(".timetable-title-panel").show();
-  });
+  });*/
   $('.timetable-results-trigger').click(function(){
     $('.timetable-menu-list').slideUp("slow",function(){
       $('.timetable-results').slideDown("slow");

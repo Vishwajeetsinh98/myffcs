@@ -263,7 +263,20 @@
   </body>
   <script type="text/javascript">
     var count = $('.timetable-selected-subject').length;
+    var doneOnce = false;
+    $(".timetable-title-panel .submit-button").click(function(){
+      $('.timetable-results').slideUp(400,function(){
+        $(".timetable-menu-list").slideDown(400);
+        doneOnce = false;
+      });
+    });
+    $(".close").click(function(){
+      $(".timetable-menu-list").slideUp(400);
+      $(".timetable-title-panel").show();
+      doneOnce = false;
+    });
     $(document).on('click','.save-tt',function(){
+      doneOnce = false;
       var slot = $(this).closest($('.custom-card')).find($('.custom-card-slot .right')).text();
       var courseCode = $(this).closest($('.custom-card')).find($('.custom-card-slot .course-code')).text().replace(slot,"");
       var faculty = $(this).closest($('.custom-card')).find($('.custom-card-front .course-faculty')).text();
@@ -376,50 +389,60 @@
       });*/
     });
     $(".course-list-1").change(function(){
-      var search = $('.course-list-1').select2('data')[0]['text'];
-      var code = search.split('-')[0];
-      $.ajax({
-        url: 'http://gdgvitvellore9.cloudapp.net:8000/course/getbycoursecode/?q='+code,
-        datatype: 'json',
-        type: 'GET',
-        success: function(response){
-          $('.faculty-list-1').empty();
-          $('.faculty-list-1').append('<option value="0">Select Faculty</option>');
-          for(var i in response.data){
-            $('.faculty-list-1').append('<option>'+response.data[i].faculty+'</option>');
+      if(!doneOnce){
+        var search = $('.course-list-1').select2('data')[0]['text'];
+        var code = search.split('-')[0];
+        code = code.slice(0,3)+'-'+code.slice(3);
+        $.ajax({
+          url: 'http://localhost:8080/course/getbycoursecode/?q='+code,
+          datatype: 'json',
+          type: 'GET',
+          success: function(response){
+            $('.faculty-list-1').empty();
+            $('.faculty-list-1').append('<option value="0">Select Faculty</option>');
+            for(var i in response.data){
+              $('.faculty-list-1').append('<option>'+response.data[i].faculty+'</option>');
+            }
+          },
+          error: function(){
+            //alert('Ajax failure');
           }
-        },
-        error: function(){
-          //alert('Ajax failure');
-        }
-      });
+        });
+        doneOnce = true;
+      }
     });
     $(document).on('change','.faculty-list-1',function(){
-      var search = $('.faculty-list-1').select2('data')[0]['text'];
-      $.ajax({
-        url: 'http://gdgvitvellore9.cloudapp.net:8000/course/getbyfaculty/?q='+search,
-        datatype: 'json',
-        type: 'GET',
-        success: function(response){
-          $('.course-list-1').empty();
-          $('.course-list-1').append('<option value="0">Select Course</option>');
-          for(var i in response.data){
-            var courseCode = response.data[i].courseCode.split('-').join('');
-            var courseTitle = response.data[i].name;
-            var course = courseCode+'-'+courseTitle;
-            $('.course-list-1').append('<option value="'+courseCode+'">'+course+'</option>');
+      if(!doneOnce){
+        var search = $('.faculty-list-1').select2('data')[0]['text'];
+        search = search.toLowerCase();
+        $.ajax({
+          url: 'http://localhost:8080/course/getbyfaculty/?q='+search,
+          datatype: 'json',
+          type: 'GET',
+          success: function(response){
+            $('.course-list-1').empty();
+            $('.course-list-1').append('<option value="0">Select Course</option>');
+            for(var i in response.data){
+              var courseCode = response.data[i].courseCode.split('-').join('');
+              var courseTitle = response.data[i].name;
+              var course = courseCode+'-'+courseTitle;
+              $('.course-list-1').append('<option value="'+courseCode+'">'+course+'</option>');
+            }
+          },
+          error: function(){
+            //alert('Ajax failure');
           }
-        },
-        error: function(){
-          //alert('Ajax failure');
-        }
-      });
+        });
+        doneOnce = true;
+      }
     });
     $(document).on('click','.timetable-menu-list .submit-button',function(){
       var courseCode = $('.course-list-1').select2('data')[0]['text'].split('-')[0];
       var faculty = $('.faculty-list-1').select2('data')[0]['text'];
+      courseCode = courseCode.slice(0,3)+'-'+courseCode.slice(3);
+      var tempFaculty = faculty.toLowerCase();
       $.ajax({
-        url: 'http://gdgvitvellore9.cloudapp.net:8000/course/get/?code='+courseCode+'&faculty='+faculty,
+        url: 'http://localhost:8080/course/get/?code='+courseCode+'&faculty='+tempFaculty,
         type: 'GET',
         datatype: 'json',
         success: function(response){
@@ -443,7 +466,7 @@
 
     $(document).on('click','.timetable-title-panel .submit-button',function(){
       $.ajax({
-        url: 'http://gdgvitvellore9.cloudapp.net:8080/course/getalldata/',
+        url: 'http://localhost:8080/course/getalldata/',
         type: 'GET',
         datatype: 'json',
         success: function(response){
