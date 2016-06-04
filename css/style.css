@@ -61,7 +61,6 @@ select span{
   body
   {
     font-size: 20px;
-    /*overflow-x: hidden!important;*/
   }
   .login-holder
   {
@@ -230,6 +229,57 @@ select span{
   .timetable-selected-subject td:nth-child(1){
     padding: 3%!important;
     font-size: 9px!important;
+  }
+}
+/*Styling for Tabs and Medium devices*/
+@media screen and (min-width:601px) and (max-width:1024px){
+  body{
+    overflow-x: hidden;
+  }
+  .login-holder{
+    width: 100%;
+    position: absolute;
+    right: 13vw;
+  }
+  .timetable-title-panel{
+    width: 100vw!important;
+  }
+  .timetable-title-panel .submit-button{
+    font-size: 15px;
+    padding: 2%;
+  }
+  .timetable-results{
+    overflow-x: scroll!important;
+  }
+  .timetable-results .custom-card:nth-child(1){
+    margin-left: -8%!important;
+  }
+  .timetable-results .custom-card{
+    width: 30%!important;
+  }
+  .timetable-results .custom-card-slot{
+    padding: 2%;
+    width: 110%!important;
+    position: relative;
+    left: -10px!important;
+    height: 35px!important;
+  }
+  .timetable{
+    overflow-x: scroll;
+  }
+  .timetable-selected-list{
+    width: 95%!important;
+    position: absolute;
+    right: -3.5%;
+  }
+  .timetable-selected-table{
+    font-size: 13px!important;
+  }
+  .timetable-selected-table .sub-text{
+    font-size: 12px;
+  }
+  .timetable-selected-table .sub-text-inside{
+    font-size: 12px!important;
   }
 }
 
