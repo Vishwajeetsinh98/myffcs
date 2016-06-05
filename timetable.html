@@ -25,17 +25,25 @@
         <i class="fa fa-times" aria-hidden="true" style="color: rgb(127,144,153);font-size: 50px"></i>
       </div>
       <div class="row">
-        <div class="col s12 m12 l12 push-l4">
-          <select id="course-list" class="course-list-1" name="course-list" style="min-width: 200px">
-              <option value="0">Search Course</option>
+        <div class="col s12 m12 l12 push-l3">
+          <select id="course-list" class="course-list-1" name="course-list" style="min-width: 200px" data-placeholder="Select Course">
+              <!--option value="0">Search Course</option-->
+              <option></option>
               <option value="CSE1002">CSE1002-Problem Solving And Programming</option>
               <option value="ITE1001">ITE1001-Digital Logic And Microprocessor</option>
               <option value="ITE1004">ITE1004-Data Structures And Algorithms</option>
               <option value="MAT1014">MAT1014-Discrete Mathematics And Graph Theory</option>
               <option value="MAT2001">MAT2001-Statistics For Engineers</option>
             </select>
-            <select id="faculty-list" class="faculty-list-1" name="faculty-list" style="min-width: 200px">
-              <option value="0">Search Faculty</option>
+            <select id="slot-list" class="slot-list-1" name="slot-list" style="min-width: 200px" data-placeholder="Select Slot">
+              <option></option>
+              <option value="B1">B1</option>
+              <option value="A1">A1</option>
+              <option value="L1+L2">L1+L2</option>
+            </select>
+            <select id="faculty-list" class="faculty-list-1" name="faculty-list" style="min-width: 200px" data-placeholder="Select Faculty">
+              <!--option value="0">Search Faculty</option-->
+              <option></option>
               <option value="SenthilKumar">Senthil Kumar</option>
               <option value="Varalakshmi">Varalakshmi</option>
             </select>
@@ -49,7 +57,7 @@
       </div>
       <div class="col s12 m3 l3 valign">
         <button class="submit-button add-course" style="margin-top: 5px;">Add Course</button>
-        <button class="submit-button logout" style="margin-top: 5px;">Logout</button>
+        <a href="http://localhost:8080/logout"><button class="submit-button-logout" style="margin-top: 5px;">Logout</button></a>
       </div>
     </div>
     <div class="row timetable-results">
@@ -371,6 +379,7 @@
     $(document).ready(function(){
       $('.course-list-1').select2();
       $('.faculty-list-1').select2();
+      $('.slot-list-1').select2();
       /*$('.timetable-results').slick({
         dots: false,
         infinite: true,
@@ -402,7 +411,7 @@
           type: 'GET',
           success: function(response){
             $('.faculty-list-1').empty();
-            $('.faculty-list-1').append('<option value="0">Select Faculty</option>');
+            //$('.faculty-list-1').append('<option value="0">Select Faculty</option>');
             for(var i in response.data){
               $('.faculty-list-1').append('<option>'+response.data[i].faculty+'</option>');
             }
@@ -424,7 +433,7 @@
           type: 'GET',
           success: function(response){
             $('.course-list-1').empty();
-            $('.course-list-1').append('<option value="0">Select Course</option>');
+            //$('.course-list-1').append('<option value="0">Select Course</option>');
             for(var i in response.data){
               var courseCode = response.data[i].courseCode.split('-').join('');
               var courseTitle = response.data[i].name;
@@ -474,9 +483,9 @@
         datatype: 'json',
         success: function(response){
           $('.course-list-1').empty();
-          $('.course-list-1').append('<option value="0">Search Course</option>');
+          //$('.course-list-1').append('<option value="0">Search Course</option>');
           $('.faculty-list-1').empty();
-          $('.faculty-list-1').append('<option value="0">Search Faculty</option>');
+          //$('.faculty-list-1').append('<option value="0">Search Faculty</option>');
           for(var i in response.data){
             var courseTitle = response.data[i].name;
             var courseCode = response.data[i].courseCode;
