@@ -503,6 +503,13 @@ select span{
   margin-top: -2%!important;
 }
 
+.save-timetable .submit-button:focus{
+  background: rgb(0,233,143);
+}
+.save-timetable .submit-button:active{
+  background: rgb(0,233,143);
+}
+
 .timetable-selected-list{
   margin: 6%!important;
   border-radius: 2px;
