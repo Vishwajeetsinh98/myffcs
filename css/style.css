@@ -192,6 +192,13 @@ select span{
     font-size: 10px!important;
     overflow-x: scroll;
   }
+  .save-timetable .submit-button{
+    width: 350%!important;
+    font-size: 12px;
+    padding: 1%!important;
+    position: relative!important;
+    left: 50%!important;
+  }
   .timetable-selected-list{
     padding: 0%!important;
     font-size: 8px!important;
@@ -266,6 +273,10 @@ select span{
   }
   .timetable{
     overflow-x: scroll;
+  }
+  .save-timetable .submit-button{
+    position: relative!important;
+    left: 50%!important;
   }
   .timetable-selected-list{
     width: 95%!important;
@@ -484,6 +495,12 @@ select span{
   font-size: 1em;
   border-radius: 50%;
   background: white;
+}
+
+.save-timetable .submit-button{
+  padding: 1%;
+  width: 10%!important;
+  margin-top: -2%!important;
 }
 
 .timetable-selected-list{

@@ -18,7 +18,6 @@
     <script src="js/script.js"></script>
     <script src="js/select2.min.js"></script>
     <script src='js/slick.min.js'></script>
-    <script src='js/jquery-ui.js'></script>
   </head>
   <body>
     <div class="timetable-menu-list">
@@ -49,7 +48,8 @@
         <a href="#"><h4 style="font-family: Montserrat">My FFCS</h4></a>
       </div>
       <div class="col s12 m3 l3 valign">
-        <button class="submit-button">Add Course</button>
+        <button class="submit-button add-course" style="margin-top: 5px;">Add Course</button>
+        <button class="submit-button logout" style="margin-top: 5px;">Logout</button>
       </div>
     </div>
     <div class="row timetable-results">
@@ -192,6 +192,9 @@
         </tr>
       </table>
     </div>
+    <div class="row save-timetable">
+      <button class="col s12 m4 l4 push-l6 submit-button">Save!</button>
+    </div>
     <div class="row timetable-selected-list z-depth-1">
       <table class="timetable-selected-table">
         <tr class="timetable-selected-headings">
@@ -264,7 +267,7 @@
   <script type="text/javascript">
     var count = $('.timetable-selected-subject').length;
     var doneOnce = false;
-    $(".timetable-title-panel .submit-button").click(function(){
+    $(".timetable-title-panel .add-course").click(function(){
       $('.timetable-results').slideUp(400,function(){
         $(".timetable-menu-list").slideDown(400);
         doneOnce = false;
@@ -464,7 +467,7 @@
       });
     });
 
-    $(document).on('click','.timetable-title-panel .submit-button',function(){
+    $(document).on('click','.timetable-title-panel .add-course',function(){
       $.ajax({
         url: 'http://localhost:8080/course/getalldata/',
         type: 'GET',
@@ -485,7 +488,6 @@
           }
         },
         error: function(){
-          $.ajax(this);
         }
       });
     });
