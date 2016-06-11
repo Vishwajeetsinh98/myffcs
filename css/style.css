@@ -43,15 +43,12 @@ select span{
   border: none;
 }
 .submit-button{
-  width: 40%!important;
   background-color: rgb(0,233,143);
-  padding: 2%;
   border: none;
   color: white;
 }
 .submit-button:focus{
   border: none;
-  padding: 2%;
 }
 .submit-button:active{
   border: none;
@@ -303,7 +300,7 @@ select span{
   }
   .save-timetable .submit-button{
     position: relative!important;
-    left: 50%!important;
+    
   }
   .timetable-selected-list{
     width: 95%!important;
@@ -385,8 +382,9 @@ select span{
 .timetable-menu-list .submit-button{
   background: rgb(0,233,143);
   width: 10%!important;
+  line-height: 36px;
   margin-left: 5px;
-  padding: 1%;
+  padding: 0 !important;
 }
 .timetable-menu-list .close{
   float: right;
@@ -531,13 +529,13 @@ select span{
   border-radius: 50%;
   background: white;
 }
-
+/*
 .save-timetable .submit-button{
   padding: 1%;
   width: 10%!important;
   margin-top: -2%!important;
 }
-
+*/
 .save-timetable .submit-button:focus{
   background: rgb(0,233,143);
 }
